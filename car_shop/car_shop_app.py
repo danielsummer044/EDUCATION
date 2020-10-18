@@ -1,6 +1,8 @@
 from flask import Flask
 app = Flask(__name__)
 
+import cars_db_sqlite as db
+
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
@@ -18,3 +20,7 @@ def search():
 def search_car():
 	# search in db by given params
 	return 'Nothing can be found'
+
+@app.route('/sort_by_year')
+def sort_by_year():
+	return str(db.sort_by_year())

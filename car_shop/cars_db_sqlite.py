@@ -95,11 +95,11 @@ def search_by_price(price_1, price_2):
 	conn = sqlite3.connect('cars.db')
 	cursor = conn.cursor()
 
-	query = cursor.execute("SELECT * FROM cars WHERE price >= ? AND price <= ? ORDER BY price ASC", (price_1, price_2)).fetchall()
+	query = cursor.execute("SELECT * FROM cars WHERE price >= ? AND price <= ? ORDER BY price ASC", (price_1, price_2))
 
-	print(query)
-
+	result = query.fetchall()
 	conn.close()
+	return result
 
 
 

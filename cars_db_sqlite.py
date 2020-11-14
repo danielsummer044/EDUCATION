@@ -1,4 +1,7 @@
+#----------------------------------------------------------------------------------------------------------------------------------------------------#
+
 import sqlite3
+
 
 
 def create_db():
@@ -24,11 +27,10 @@ def create_db():
 	# create_db()
 
 
-
 # HOME WORK
 #----------------------------------------------------------------------------------------------------------------------------------------------------#
 
-def sort_by_brand():
+def sort_by_brand(order):
 
 	conn = sqlite3.connect('cars.db')
 	cursor = conn.cursor()
@@ -38,9 +40,10 @@ def sort_by_brand():
 	else:
 		query = cursor.execute("SELECT * FROM cars ORDER BY brand DESC")
 
-	print(query)
-
+	result = query.fetchall()
 	conn.close()
+
+	return result
 
 
 
@@ -49,15 +52,16 @@ def search_by_brand(brand):
 	conn = sqlite3.connect('cars.db')
 	cursor = conn.cursor()
 
-	query = cursor.execute("SELECT * FROM cars WHERE brand = ? ORDER BY brand ASC", (brand)).fetchall()
+	query = cursor.execute("SELECT * FROM cars WHERE brand = ?", (brand)).fetchall()
 
-	print(query)
-	
+	result = query.fetchall()
 	conn.close()
+
+	return result
 
 #----------------------------------------------------------------------------------------------------------------------------------------------------#
 
-def sort_by_year():
+def sort_by_year(order):
 
 	conn = sqlite3.connect('cars.db')
 	cursor = conn.cursor()
@@ -67,9 +71,10 @@ def sort_by_year():
 	else:
 		query = cursor.execute("SELECT * FROM cars ORDER BY year DESC")
 
-	print(query)
-
+	result = query.fetchall()
 	conn.close()
+
+	return result
 
 
 
@@ -80,13 +85,13 @@ def search_by_year(year):
 
 	query = cursor.execute("SELECT year FROM cars WHERE year = ? ORDER BY year ASC", (year)).fetchall()
 
-	print(query)
-
 	conn.close()
+
+	return result
 
 #----------------------------------------------------------------------------------------------------------------------------------------------------#
 
-def sort_by_price():
+def sort_by_price(order):
 
 	conn = sqlite3.connect('cars.db')
 	cursor = conn.cursor()
@@ -96,9 +101,10 @@ def sort_by_price():
 	else:
 		query = cursor.execute("SELECT * FROM cars ORDER BY price DESC")
 
-	print(query)
-
+	result = query.fetchall()
 	conn.close()
+
+	return result
 
 
 
@@ -109,13 +115,15 @@ def search_by_price(price_1, price_2):
 
 	query = cursor.execute("SELECT price FROM cars WHERE price >= ? AND price <= ? ORDER BY price ASC", (price_1, price_2)).fetchall()
 
-	print(query)
-
+	result = query.fetchall()
 	conn.close()
 
-#----------------------------------------------------------------------------------------------------------------------------------------------------#
+	return result
 
+#----------------------------------------------------------------------------------------------------------------------------------------------------#
 def main():
 
-	cars = search_by_price(18000, 15000)
+	cars = sort_by_price('ASC')
 	print(cars)
+	
+main()

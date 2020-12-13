@@ -1,7 +1,9 @@
-n = 753
+n = 75312
  
-b = n % 10
-c = n % 100 // 10
-d = n // 100
- 
-print(b + c + d)
+sum_cifr = 0
+
+while n > 0:
+	sum_cifr = sum_cifr + n % 10 
+	n = n // 10
+
+print(sum_cifr)

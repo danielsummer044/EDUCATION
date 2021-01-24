@@ -1,23 +1,17 @@
 mas0 = [1001, 1010101, 10101110]
 
-"""
-mas = str(mas0)
+def remove_zero(number):
+    """remove zeroes from number:
+    1001 -> 11
+    """
+    s2 = ''
+    s = str(number)
+    for element in s:
+        if element != "0":
+            s2 = s2 + element
+        
+    return int(s2)
 
-x = mas.split("0")
-for i in range(len(mas)):
-	if mas[i] == "1":	# False True, continue ???
-		print(mas[i], end = "")
-print()
-"""
 
-
-
-def one(mas0):
-
-	mas = str(mas0)	#from list to string
-	x = mas.split("0")	#remove 0
-	for i in range(len(mas)):
-		if mas[i] == "1":
-			print(mas[i], end = "")
-	return
-print(one(mas0))
+for number in mas0:
+    print(remove_zero(number), end=', ')

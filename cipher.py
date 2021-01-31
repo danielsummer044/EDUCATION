@@ -1,17 +1,28 @@
-from sting import ascii_lowercase, ascii_uppercase
+from string import ascii_lowercase, ascii_uppercase
 
 
-def next_letter(letter):
+def get_new_letter(letter_case, letter, step):
+	new_index = letter_case.index(letter) + step
+	if new_index > len(letter_case) - 1:
+		new_index = (letter_case.index(letter) + step ) % len(letter_case)
+	new_letter = letter_case[new_index]
+	return new_letter
+
+
+def next_letter(letter, step):
 	"""
 	'A' -> 'B'
 	'a' -> 'b'
 	'Z' -> 'A'
 	'z' -> 'a'
 	"""
+
 	if letter in ascii_uppercase:
-		# get next letter
+		new_letter = get_new_letter(ascii_uppercase, letter, step)
 	elif letter in ascii_lowercase:
-		# get next letter
+		new_letter = get_new_letter(ascii_lowercase, letter, step)
+	else:
+		new_letter = letter
 	return new_letter
 
 
@@ -23,32 +34,40 @@ def prev_letter(letter):
 	'a' -> 'z'
 	"""
 	if letter in ascii_uppercase:
-		# get next letter
+		pass
 	elif letter in ascii_lowercase:
-		# get next letter
+		pass
 	return new_letter
 
 
-def encode(text):
+def encode(text, step):
 	"""
 	"Hello world" -> "Ifmmp xpsme"
 	"""
-	# TODO: make encoded_text
+	encoded_text = ''
 	for letter in text:
-		next_letter(letter)
+		encoded_text += next_letter(letter, step)
 	return encoded_text
 
 
-def decode(text):
+def decode(text, step):
 	"""
 	"Ifmmp xpsme" -> "Hello world" 
 	"""
+	decoded_text = ''
+	for letter in text:
+		decoded_text += prev_letter(letter, step)
 	return decoded_text
 
 
-# check
-text = 'Hello world'
-encoded_text = encode(text)
-print(encoded_text)
-decoded_text = decode(text)
-print(decoded_text)
+def main():
+	# check
+	text = 'Hello world'
+	step = 1
+	encoded_text = encode(text, step)
+	print(encoded_text)
+	#decoded_text = decode(text)
+	#print(decoded_text)
+
+
+main()

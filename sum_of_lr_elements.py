@@ -10,9 +10,10 @@ for i in range(len(mas)):
 
 mas = [1, 4, 5, 8, 3, 6, 7, 2, 11, 9]
 summ = []
-for i in range(len(mas)):
-	l = mas[i]
-	r = mas[i+2]
-	if l + r == 8:
-		x = summ.append(l)
-		print(x)
+for i in range(1, len(mas)-1):
+	left = mas[i-1]
+	right = mas[i+1]
+	if left + right == mas[i]:
+		summ.append(mas[i])
+
+print(summ)

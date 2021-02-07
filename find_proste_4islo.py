@@ -8,6 +8,26 @@ if a / a == b and a / b == a:
 
 arr = [7, 9, 11, 41, 14, 81, 5, 3, 1, 2]
 
-for i in range(len(arr)):
-	if arr[i] / arr[i] == 1 and arr[i] / 1 == arr[i]:
-		print('Proste')
+def is_proste(n):
+	for dilnik in range(2, n):
+		if n % dilnik == 0:
+			return False
+	return True
+
+
+
+a = 5
+print(f'{a} proste: {is_proste(a)}')
+
+
+a = 6
+print(f'{a} proste: {is_proste(a)}')
+
+a = 12
+print(f'{a} proste: {is_proste(a)}')
+
+a = 13
+print(f'{a} proste: {is_proste(a)}')
+
+for number in arr:
+	print(is_proste(number))

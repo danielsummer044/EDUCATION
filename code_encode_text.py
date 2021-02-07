@@ -8,11 +8,16 @@ def next_letter(letter):
 	'Z' -> 'A'
 	'z' -> 'a'
 	"""
-	if letter in ascii_uppercase:
+	coded_text = ''
+	step = 1
+	if letter in ascii_lowercase:
 		coded_text = coded_text + ascii_lowercase[ascii_lowercase.index(letter) + step % len(ascii_lowercase)]
 
-	if letter in ascii_lowercase:
+	if letter in ascii_uppercase:
 		coded_text = coded_text + ascii_uppercase[ascii_uppercase.index(letter) + step % len(ascii_uppercase)]
+
+	else:
+		coded_text += text
 
 	return coded_text
 

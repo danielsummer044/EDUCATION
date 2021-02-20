@@ -83,3 +83,18 @@ def main():
 
 if __name__ == '__main__':
 	main()
+
+
+x = 'daniel'
+index_word_step = 0
+
+for elem in x:
+	if elem in ascii_lowercase:
+		step += ???
+
+		if step > len(x) - 1:
+			step = 0
+
+		print(ascii_lowercase.index(elem))
+	if elem in ascii_uppercase:
+		print(ascii_lowercase.index(elem))

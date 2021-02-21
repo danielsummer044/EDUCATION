@@ -1,5 +1,5 @@
 from string import ascii_lowercase, ascii_uppercase
-
+special_symbols = '*+-().,'
 
 def get_new_letter(letter_case, letter, step):
 	new_index = letter_case.index(letter) + step
@@ -43,6 +43,16 @@ def prev_letter(letter, step):
 	return new_letter
 
 
+def to_int(symbol):
+	if symbol in ascii_lowercase:
+		return ascii_lowercase.index(symbol)
+	if symbol in ascii_uppercase:
+		return ascii_uppercase.index(symbol)
+	if symbol in special_symbols:
+		return special_symbols.index(symbol)
+	return int(symbol)
+
+
 def encode(text, password):
 	"""
 	"Hello world" -> "Ifmmp xpsme"
@@ -50,7 +60,7 @@ def encode(text, password):
 	step_index = 0
 	encoded_text = ''
 	for letter in text:
-		encoded_text += next_letter(letter, int(password[step_index]))
+		encoded_text += next_letter(letter, to_int(password[step_index]))
 		step_index += 1
 		if step_index > len(password)-1:
 			step_index = 0
@@ -64,7 +74,7 @@ def decode(text, password):
 	step_index = 0
 	decoded_text = ''
 	for letter in text:
-		decoded_text += prev_letter(letter, int(password[step_index]))
+		decoded_text += prev_letter(letter, to_int(password[step_index]))
 		step_index += 1
 		if step_index > len(password)-1:
 			step_index = 0
@@ -74,7 +84,7 @@ def decode(text, password):
 def main():
 	# check
 	text = 'Hello world'
-	password = '1763'
+	password = 'abc*'
 	encoded_text = encode(text, password)
 	print(encoded_text)
 	decoded_text = decode(encoded_text, password)
@@ -83,18 +93,3 @@ def main():
 
 if __name__ == '__main__':
 	main()
-
-
-x = 'daniel'
-index_word_step = 0
-
-for elem in x:
-	if elem in ascii_lowercase:
-		step += ???
-
-		if step > len(x) - 1:
-			step = 0
-
-		print(ascii_lowercase.index(elem))
-	if elem in ascii_uppercase:
-		print(ascii_lowercase.index(elem))

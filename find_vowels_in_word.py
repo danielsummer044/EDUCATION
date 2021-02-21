@@ -3,13 +3,19 @@ vowels = 'AEIOUYaeiouy'
 
 text = ['Hello', 'my', 'NAME', 'is', 'Daniel']
 #		  2	      1	     2		1		3
-amount_of_voewls_in_text = 0
 
-for words in text:
-	for letters in words:
+slovo_max_golosni = ''
+max_golosni = 0
+
+for word in text:
+	amount_of_voewls_in_word = 0
+	for letters in word:
 		if letters in vowels:
-			amount_of_voewls_in_text += 1
-	if letters != vowels:
-		break
+			amount_of_voewls_in_word += 1
 
-print(amount_of_voewls_in_text)
+	if amount_of_voewls_in_word > max_golosni:
+		max_golosni = amount_of_voewls_in_word
+		slovo_max_golosni = word
+
+print(slovo_max_golosni)
+

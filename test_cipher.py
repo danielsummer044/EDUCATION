@@ -1,4 +1,4 @@
-from cipher import get_new_letter, encode
+from pass_2 import get_new_letter, encode, to_int
 from string import ascii_lowercase, ascii_uppercase
 
 
@@ -30,10 +30,18 @@ def test_get_new_letter_step():
 
 def test_encode():
 
-    assert encode('Hello', 1) == 'Ifasdaadfdafmp'
+    assert encode('Hello', '1') == 'Ifmmp'
+    print('test passed')
+
+
+def test_to_int():
+    assert to_int('a') == 0
+    assert to_int('b') == 1
+    assert to_int('5') == 5
     print('test passed')
 
 
 test_get_new_letter()
 test_get_new_letter_step()
 test_encode()
+test_to_int()

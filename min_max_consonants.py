@@ -1,6 +1,7 @@
 text = ['School', 'apple', 'Car', 'onion', 'We', 'wood', 'Smile']
 #			4		3		2		2		1		2		3
 consonants = 'BCDFGHJKLMNPQRSTVWXYZbcdfghjklmnpqrstvwxyz'
+vowels = 'aeiouAEIOU'
 
 
 max_consonants = 0 # ?1
@@ -10,8 +11,6 @@ max_word = ''
 min_word = ''
 
 for word in text:
-
-# ?2
 	amount_of_consonants_in_word = 0
 
 	for letter in word:
@@ -21,6 +20,13 @@ for word in text:
 
 	if amount_of_consonants_in_word > max_consonants:
 		max_consonants = amount_of_consonants_in_word
-#		max_word = word
+		max_word = word
 
-		print(max_consonants, word)
+	if min_consonants == 0:
+		min_consonants = amount_of_consonants_in_word # 4 first time
+	elif amount_of_consonants_in_word < min_consonants: # 4 < 4
+		min_consonants = amount_of_consonants_in_word
+		min_word = word
+
+print(max_consonants, max_word)
+print(min_consonants, min_word)

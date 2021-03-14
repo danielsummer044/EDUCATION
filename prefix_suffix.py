@@ -3,13 +3,10 @@ text = ['apple', 'hello', 'car', 'hell', 'argument', 'height', 'undo', 'prefire'
 prefix = 'un'
 suffix = 'ment'
 
-prefix_len = len(prefix)
-suffix_len = len(suffix)
-
 for word in text:
 
-    first = word[:prefix_len]
-    last = word[-suffix_len:]
+    if word.startswith(prefix):
+        print(word)
 
-    if first == prefix or last == suffix:
+    if word.endswith(suffix):
         print(word)

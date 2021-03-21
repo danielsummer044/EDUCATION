@@ -1,9 +1,8 @@
 text = ['apple', 'dad', 'tree', 'hello', 'mom', 'brother', 'sisters']
 
 for word in text:
-    for letter in word:
-        if word.startswith(letter) and word.endswith(letter):
-            print(word)    
+    if word[0] == word[len(word)-1]:
+         print(word)
 
 
 """

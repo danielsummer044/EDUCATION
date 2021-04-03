@@ -5,18 +5,24 @@ board = [[' ', ' ', ' '],
          [' ', ' ', ' '],
          [' ', ' ', ' ']]
 
+
+
 letters = 'ABC'
 digits = '012'
 
+
+
 def print_board(board):
-    print('   A     B    C')
+
+    print('    A    B    C')
     for index, row in enumerate(board):
         print(f'{index} {row}')
-
 print_board(board)
 
+
+
 def player_move():
-    # Перевірити чи клітинка не зайнята
+
     move_incorrect = True
     while move_incorrect:
         move = input('Ваш хід (Велика літера + цифра, напр. C2): ')
@@ -28,8 +34,10 @@ def player_move():
         else:
             print("Клітинка зайнята")
 
+
+
 def computer_move():
-    # Перевірити чи клітинка не зайнята
+
     move_incorrect = True
     while move_incorrect:
         letter = random.choice(letters)
@@ -41,6 +49,7 @@ def computer_move():
             move_incorrect = False
 
 
+
 def is_board_full(board):
     for i in range(len(board)):
         for j in range(len(board[i])):
@@ -48,7 +57,10 @@ def is_board_full(board):
                 return False
     return True
 
+
+
 def is_player_win(symbol, board):
+
     for i in range(len(board)):
         win = True
         for j in range(len(board[i])):
@@ -56,6 +68,7 @@ def is_player_win(symbol, board):
                 win = False
         if win:
             return True
+
 
 
     for j in range(len(board[0])):
@@ -66,12 +79,16 @@ def is_player_win(symbol, board):
         if win:
             return True
 
+
+
     win = True
     for i in range(len(board)):
         if board[i][i] != symbol:
             win = False
     if win:
         return True
+
+
 
     win = True
     for i in range(len(board)):
@@ -82,11 +99,39 @@ def is_player_win(symbol, board):
 
 
 
+def is_computer_win(symbol, board):
+
+    for i in range(len(board)):
+        win = True
+        for j in range(len(board[i])):
+            if board[i][j] != symbol:
+                win = False
+            if win:
+                return True
+
+
+
+def game_tie(symbol, board):
+    pass
+
+
+def messages():
+
+    if is_player_win():
+        print("PLAYER WON!")
+    if is_computer_win():
+        print("COMPUTER WON!")
+
+
+
 def game_over(board):
+
     return is_player_win('X', board) or is_player_win('O', board) or is_board_full(board)
 
 
+
 def play():
+
     while True:
         player_move()
         print_board(board)
@@ -97,6 +142,7 @@ def play():
         print_board(board)
         if game_over(board):
             break
+
 
 
 play()

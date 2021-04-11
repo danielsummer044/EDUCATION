@@ -111,8 +111,16 @@ def is_computer_win(symbol, board):
 
 
 
-def game_tie(symbol, board):
-    pass
+def game_tie(board):
+    count = 0
+    for i in range(len(board)):
+        for j in range(len(board[i])):
+            if board[i][j] == "X" or board[i][j] == "O":
+                count += 1
+                if count == 9:
+                    print("THE GAME ENDS IN A TIE!")
+                    return True
+                return False
 
 
 def messages():

@@ -6,16 +6,18 @@ def punctuation_counter(string):
         if element in punctuation_marks:
             count = count + 1
     return count
-"""
+
 def lower_upper_case(string):
     new_string = ""
     for letter in string:
         if letter in ascii_uppercase:
-            new_string = string.replace(letter, letter.lower())
-        if letter in ascii_lowercase:
-            new_string = string.replace(letter, letter.upper())
+            new_string += letter.lower()
+        elif letter in ascii_lowercase:
+            new_string += letter.upper()
+        else:
+            new_string += letter
     return new_string
-"""
+
 def punctuation_remover(string):
     for element in string:
        if element in punctuation_marks:
@@ -23,7 +25,10 @@ def punctuation_remover(string):
     return string
 
 def reverse(string):
-    return string[::-1]
+    reversed_string = ''
+    for i in range(len(string)-1, -1, -1):
+        reversed_string += string[i]
+    return reversed_string
 
 punctuation_marks = (".", ",", ":", ";", "?", "!", "-", "`", "'")
 string = "Daniel: - 'Hello! Today is a good spring day. Isn`t it?'"

@@ -28,10 +28,11 @@ print(new_string)
 """
 
 string = 'Hello World!'
-width = 40
+width = 20
 space = '-'
 left_right = width - len(string)
 left = left_right // 2
 right = left
 print(left * space + string + right * space)
+print(len("--------------Hello World!--------------"))
 

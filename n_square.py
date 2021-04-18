@@ -1,8 +1,14 @@
-n = 10
+n = 16
+square = False
+
 for i in range(1, n+1):
     m = i ** 2
-    #print(m)
-    print(m, '---', pow(m,1/2))
+    if m == n:
+        square = True
+        break
+print(square)
+
+
 """
 n = 10
 for i in range(1, n+1):

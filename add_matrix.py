@@ -12,15 +12,12 @@ n = len(a[0])
 
 # HOMEWORK
 def create_empty_array(m,n):
-    c = [0] * n
-    #? D:
-    return c
+    return [[0] * n for i in range(m)]
 
-print(create_empty_array(m,n))
+c = create_empty_array(m,n)
 # c = a + b => c[i][j] = a[i][j]+ b[i][j]
-"""
+
 for i in range(len(a)):
     for j in range(len(a[i])):
         c[i][j] = a[i][j] + b[i][j]
 print(c)
-"""

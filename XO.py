@@ -46,7 +46,6 @@ def is_board_full(board):
                 return False
     return True
 
-
 def is_player_win(symbol, board):
 
     for i in range(len(board)):
@@ -79,11 +78,19 @@ def is_player_win(symbol, board):
     if win:
         return True
 
+def is_computer_win(symbol, board):
 
-def game_tie(board):
+    for i in range(len(board)):
+        win = True
+        for j in range(len(board[i])):
+            if board[i][j] != symbol:
+                win = False
+            if win:
+                return True
+
+def is_game_tie(board):
 
     return is_board_full(board) and not (is_player_win('X', board) or is_player_win('O', board))
-
 
 def messages():
 
@@ -93,23 +100,20 @@ def messages():
         print("▼▲     ▼▲     ▼▲     ▼▲     ▼▲     ▼▲     ▼▲     ▼▲")
         print("◀▶      P L A Y E R     (* ᴗ *)     W O N !      ◀▶")
         print("▲▼     ▲▼     ▲▼     ▲▼     ▲▼     ▲▼     ▲▼     ▲▼")
-        return None
 
-    if is_player_win('O', board):
+        return is_player_win('X', board)
+
+    if is_computer_win('O', board):
 
         print()
         print("▼▲     ▼▲     ▼▲     ▼▲     ▼▲     ▼▲     ▼▲     ▼▲")
         print("◀▶      C O M P U T E R   (x ᴖ x)   W O N !      ◀▶")
         print("▲▼     ▲▼     ▲▼     ▲▼     ▲▼     ▲▼     ▲▼     ▲▼")
-        return None
 
+        return is_computer_win('X', board) # WHY X ???
 
-    print()
-    print("▼▲     ▼▲     ▼▲     ▼▲     ▼▲     ▼▲     ▼▲     ▼▲")
-    print("◀▶                    GAME TIE!                  ◀▶")
-    print("▲▼     ▲▼     ▲▼     ▲▼     ▲▼     ▲▼     ▲▼     ▲▼")
-    return None
-
+    if is_game_tie(borad):
+        print('game tie')
 
 def game_over(board):
 

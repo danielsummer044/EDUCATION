@@ -1,32 +1,21 @@
 products = {'Onion': 23.75, 'Fish': 45.00, 'Oil': 62.25, 'Bread': 24.50, 'Milk': 35.00 }
 money = 500
 
-name = []
-for key,value in products.items():
-    name.append(key)
-
-price = []
-for key, value in products.items():
-    price.append(value)
-
 # how much can you buy
 def count(price, money):
-    for i in range(len(price)):
-        x = money // price[i]
-        print(int(x), name[i])
-        print('-' * 10)
-    return None
+    x = money // price
+    return int(x)
 
-# how much maximum products you can buy
-def maximum(price, money):
-    maximum = 0
-    for i in range(len(price)):
-            x = money // price[i]
-            x = int(x)
-            if x > maximum:
-                maximum = x
-    print("Maximum products you can buy:", maximum)
-    return None
+# product -> key, price -> value
+iteration = 0
+for key, value in products.items():
+    if iteration == 0:
+        maximum = count(value, money)
+        max_product = key
+    else:
+        if count(value, money) > maximum:
+            maximum = count(value, money)
+            max_product = key
+    iteration += 1
 
-print(count(price, money))
-print(maximum(price, money))
+print(maximum, max_product)

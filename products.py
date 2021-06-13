@@ -4,6 +4,7 @@ price = [23.75, 45.00, 62.25, 24.50, 35.00]
 
 money = 500
 
+products = {'Onion': 23.75, ''}
 # how much can you buy
 """
 def count(price, money):

@@ -1,34 +1,50 @@
 from pprint import pprint
-"""
-board = '''\
-8+-+-+-+-
-7-+-+-+-+
-6+-+-+-+-
-5-+-+-+-+
-4+-+-+-+-
-3-+-+-+-+
-2+-+-+-+-
-1-+-+-+-+
- ABCDEFGH'''
-"""
-board = """\
-+-+-+-+-
--+-+-+-+
-+-+-+-+-
--+-+-+-+
-+-+-+-+-
--+-+-+-+
-+-+-+-+-
--+-+-+-+"""
 
-#letters = 'ABCDEFGH'
+cell = '□'
+size = 8
+knight = 'K'
+letters = 'ABCDEFGH'
+move = '*'
 
-arr = []
-for row in board.split('\n'):
-    arr.append(row)
-#print(arr)
+def print_board(board):
+    # TODO: print_board
+    pass
 
-knight_start_pos = arr[0][6]
-knight_end_pos = arr[2][5]
 
-pprint(arr)
+board = [[cell for i in range(size)] for j in range(size)]
+pprint(board)
+
+start_position = input('Введіть стартову позицію коня: ')
+
+letter, digit = start_position
+row = int(digit) - 1
+col = letters.index(letter)
+board[row][col] = knight
+
+pprint(board)
+print()
+
+# TODO:
+if row + 2 <= size -1 and col + 1 <= size - 1:
+    board[row+2][col+1] = move
+if row - 2 >= 0 and col - 1 >= 0:
+    board[row-2][col-1] = move
+if row - 1 >= 0 and col - 2 >= 0:
+    board[row-1][col-2] = move
+
+if row + 2 <= size - 1 and col - 1 >= 0:
+    board[row+2][col-1] = move
+if row + 1 <= size - 1 and col + 2 <= size - 1:
+    board[row+1][col+2] = move
+
+if row - 1 >= 0 and col + 2 <= size - 1:
+    board[row-1][col+2] = move
+
+if row + 1 <= size - 1 and col - 2 >= 0:
+    board[row+1][col-2] = move
+
+if row - 2 >= 0 and col - 1 >= 0:
+    board[row-2][col-1] = move
+
+pprint(board)
+
